@@ -26,7 +26,7 @@ jobs:
           submodules: "recursive"
       - name: Cache ccache
         id: cache-ccache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/.ccache
           key: ${{ runner.os }}-${{ env.SAFE_ARCH }}-ccache-all
@@ -40,7 +40,7 @@ jobs:
           cd build
           CXXFLAGS="-stdlib=libc++" CC=/usr/bin/clang-10 CXX=/usr/bin/clang++-10 cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH=../tdlib ..
           cmake --build . --target install -- -j4
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: tdlight-${{ env.SAFE_ARCH }}
           path: tdlib/lib

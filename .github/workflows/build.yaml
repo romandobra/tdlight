@@ -1,17 +1,14 @@
 name: Build TDLib
 
 on:
-  push:
-  pull_request:
-  schedule:
-    - cron: '0 0 * * 0' # weekly
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-20.04
     strategy:
       matrix:
-        arch: [linux/386, linux/amd64, linux/arm/v6, linux/arm/v7, linux/arm64, linux/ppc64le]
+        arch: [linux/amd64]
 
     steps:
       - name: Setup variables
